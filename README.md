@@ -1,1 +1,1 @@
-mydataset
+mydataset for semantic segmentation dataset
