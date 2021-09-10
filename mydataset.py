@@ -1,5 +1,4 @@
 import torch
-import cv2
 from PIL import Image
 from torch.utils.data import Dataset
 
@@ -11,7 +10,7 @@ class Data(Dataset):
         for line in fh:
             line = line.rstrip()
             words = line.split()
-            imgs.append((words[0],int(words[1])))
+            imgs.append((words[0], words[1]))
             
         self.imgs = imgs
         self.transform = transform
@@ -19,8 +18,7 @@ class Data(Dataset):
  
     def __getitem__(self, index):
         fn, label = self.imgs[index]
-        
-        img = Image.open(fn).convert('L')
+     
         if self.transform is not None:
             img = self.transform(img) 
         return img,label
