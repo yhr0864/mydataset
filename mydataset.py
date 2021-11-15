@@ -18,9 +18,12 @@ class Data(Dataset):
  
     def __getitem__(self, index):
         fn, label = self.imgs[index]
+        img = Image.open(fn).convert('RGB')
+        label = Image.open(label).convert('RGB')
      
         if self.transform is not None:
             img = self.transform(img) 
+            label = self.transform(label)
         return img,label
  
     def __len__(self): 
